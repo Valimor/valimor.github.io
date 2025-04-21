@@ -30,10 +30,18 @@ My initial idea for the algorithm followed these steps:
 2. Compute the sum $\sum_{k=0}^{l}B^k$ for some arbitrarily large value $l$. This value should approximate the inverse of $I - B$, but by construction this is equal to te inverse of $A$.
 
 This idea worked well for my first few matrices that I selected. However, when I tried to invert the matrix 
-$$A = \begin{bmatrix} 10 & 0 \\ 0 & 10 \\ \end{bmatrix} $$
+
+$$A = \begin{bmatrix} 
+    10 & 0 \\
+    0 & 10 \\ 
+    \end{bmatrix} $$
+
 I noticed a problem. Since it is a diagonal matrix, all it does is scale the matrix it multiplies (this will be important later). It does not take very much knowledge of linear algebra to correctly guess the inverse of this matrix.
 
-$$A^{-1} = \begin{bmatrix} \frac{1}{10} & 0 \\ 0 & \frac{1}{10} \\ \end{bmatrix} $$
+$$A^{-1} = \begin{bmatrix} 
+        \frac{1}{10} & 0 \\ 
+        0 & \frac{1}{10} \\ 
+        \end{bmatrix} $$
 
 It is left as an exercise to the reader to show that successive powers of $-9$ do not sum to $\frac{1}{10}$, and therefore that there are some *minor* issues with the naive algorithm.
 
