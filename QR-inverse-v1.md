@@ -76,7 +76,7 @@ We use this result to return to our question of convergence. If the scalar case 
 
 It is left an an exercise to the reader to show from the defintion of eigenvalues that the addition of any diagonal matrix to another matrix will shift the eigenvalues of the original matrix by exactly the values contained in the diagonal matrix.
 
-# QR Decomposition and the unexpected blessings of nilpotence
+# QR Decomposition
 
 We have meandered pretty far, so let's recap what we have discovered so far.
 
@@ -95,3 +95,16 @@ To do this, let us once again return to the idea of a matrix decomposition. Spec
 In the QR decomposition, we decompose $A$ into the product of two matrices $QR$. In this case, $Q$ is an orthonormal matrix (think a rotation matrix) and $R$ is a triangular matrix. To compute the inverse of $A$, it is much cheaper to compute the inverse of $R$, then multiply it by the inverse of $Q$. As an added bonus, because $Q$ is orthonormal, $Q^T=Q^{-1}$, so we have already computed one of the required inverses.
 
 Additionally, from the definition of eigenvalues it is fairly trivial to show that all of the diagonal elements of $R$ are the eigenvalues of $A$. To keep track of this, we will introduce another matrix that we will call $\Lambda^{-1}$. $\Lambda^{-1}$ is a diagonal matrix, and all of its elements are the reciprocals of the eigenvalues of $R$. When $\Lambda^{-1}$ is multiplied by $R$, the resulting matrix has eigenvalues of $1$. This has the unexpected effect of making $I - A$ a nilpotent matrix, which will bring this algorithm from an interesting showcase into a technique that can calculate matrix inverses exactly in finite time.
+
+However, before we get into why nilpotence saves this algorithm, lets recap the steps we have come up with:
+1. Compute the QR decomposition for a matrix $A$
+2. Construct the matrix $\Lambda^{-1}$ from the reciprocals of the diagonal of $R$
+3. Set $B = I - \Lambda^{-1}R$
+4. Compute the geometric series $S = \sum_{k=0}^{\infty}B^k$
+5. Transform $S$ back to $A^{-1}$ through the equation $A^{-1} = S\Lambda^{-1} Q^T$
+
+Every step listed is computationally simple, with the exception of step 4. However, even that is actually acheivable in finite time.
+
+# Nilpotence: the strange property that saves this algorithm
+
+A *nilpotent* matrix is a non-zero matrix $M$ where there exists some integer $k$ such that $M^k$ is the zero matrix.
