@@ -63,5 +63,8 @@ As you can see, in the above image there are a series of rectangles added every 
 
 $$\sum_{n=0}^{\infty}x^n=\frac{1-x^\infty}{1-x}$$.
 
-If $x$ is between -1 and 1 then $x^n$ approaches zero as $n$ gets big, so we can say that the *limit* of $x^n$ as $n\arrow\infty$ is $0$.
+If $x$ is between -1 and 1 then $x^n$ approaches zero as $n$ gets big, so we can say that the *limit* of $x^n$ as $n\rightarrow\infty$ is $0$. Therefore, we can just get rid of the $x^\infty$ and change our sum to the following:
 
+$$\sum_{n=0}^{\infty}x^n=\frac{1}{1-x}$$.
+
+This is the formula that we will use extensively for the rest of the deep dive.
