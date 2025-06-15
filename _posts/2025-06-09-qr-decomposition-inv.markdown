@@ -183,4 +183,4 @@ One important point of note is that even though this technically outperforms num
 
 # Future work
 
-The actual novelty of the proposed algoritm here is not contingent on using the QR decomposition. Instead, what was truly discovered was a means of raising a triangular matrix to an arbitrary power, which is further discussed in [this post.](/2025/06/15/computing-triangular-powers.html)
+The actual novelty of the proposed algorithm here is not contingent on using the QR decomposition. Instead, what was truly discovered was a means of raising a triangular matrix to an arbitrary power, which is further discussed in [this post.](/2025/06/15/computing-triangular-powers.html)
