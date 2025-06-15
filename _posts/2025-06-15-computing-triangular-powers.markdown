@@ -4,9 +4,12 @@ title:  "Efficient Computation of Powers of Triangular Matrices"
 date:   2025-06-15
 categories:
 ---
+
+# Raising a Matrix to a Power
+
 # Generalization with Hypergeometric Series
 
-As I was working on this post I realized that what I had  found was a specific case of a more general algorithm. The traditional geometric series generalizes to the *hypergeometric* series, a mathematical construct famously used by Gauss.
+As I was working on [this post](/2025/06/09/qr-decomposition-inv.html) I realized that what I had  found was a specific case of a more general algorithm. The traditional geometric series generalizes to the *hypergeometric* series, a mathematical construct famously used by Gauss.
 
 $$_2F_1(a,b;c;z) := \sum_{n=0}^{\infty}\frac{(a)_n(b)_n}{(c)_n}\frac{z^n}{n!}$$
 
