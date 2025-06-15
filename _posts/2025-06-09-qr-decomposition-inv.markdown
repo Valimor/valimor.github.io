@@ -2,7 +2,7 @@
 layout: post
 title:  "A Novel Algorithm For Matrix Inversion"
 date:   2025-06-09 12:51:16 -0500
-categories: linear algebra
+categories:
 ---
 # Introduction
 
@@ -24,7 +24,7 @@ $$A^{-1} = \frac{1}{ad - bc} \begin{bmatrix}
     -c & a \\ 
     \end{bmatrix}$$
 
-However, as the matrices get larger and larger, these closed-form solutions become far more complex. To account for this, various algorithms to compute the inverse of a matrix have been proposed, such as Gauss-Jordan elimination and [insert other algorithm]. In this post, I will propose a novel algorithm based on geometric series.
+However, as the matrices get larger and larger, these closed-form solutions become far more complex. To account for this, various algorithms to compute the inverse of a matrix have been proposed, such as [Gauss-Jordan elimination](https://en.wikipedia.org/wiki/Gaussian_elimination) and the [adjoint method](https://en.wikipedia.org/wiki/Adjugate_matrix). In this post, I will propose a novel algorithm based on geometric series.
 
 # Geometric Series
 
@@ -39,7 +39,7 @@ Notably, this formula provides us with a means of computing the inverse of $$1-r
 
 My initial idea for the algorithm followed these steps:
 1. Given the matrix $$A$$ that one wants to invert, compute a corresponding matrix $$B = I - A$$. $$I$$ is the identity matrix, and is the linear algebra equivalent of the scalar quantity $$1$$.
-2. Compute the sum $$\sum_{k=0}^{l}B^k$$ for some arbitrarily large value $$l$$. This value should approximate the inverse of $$I - B$$, and by construction this is equal to the inverse of $$A$$.
+2. Compute the sum $$\sum_{k=0}^{l}B^k$$ for some arbitrarily large value $$l$$. This value should approximate the inverse of $$I - B$$, and by construction approximates the inverse of $$A$$.
 
 This idea worked well for my first few matrices that I selected. However, when I tried to invert the matrix 
 
@@ -180,3 +180,7 @@ For me, the main point of surprise is that this algorithm is even functional. Up
 The main result that was shocking to me was the nilpotence of the transformed matrix. I originally anticipated this to be an interesting showcase that could approximate the inverse of some matrices, but would never converge to the real value. After all, even an approximation can be interesting. It was only once I started digging into the weeds of convergence that I realized that the eigenvalues of the $$B$$ matrix could be turned into whatever I want through a QR-decomposition.
 
 One important point of note is that even though this technically outperforms numpy it still lacks practicality. Computing matrix inverses is slow and generally not advisable when solving linear systems. Instead, other methods exist that can solve the system directly and generally provide much less roundoff error.
+
+# Future work
+
+The actual novelty of the proposed algoritm here is not contingent on using the QR decomposition. Instead, what was truly discovered was a means of raising a triangular matrix to an arbitrary power, which is further discussed in [this post.](/2025/06/15/computing-triangular-powers.html)
